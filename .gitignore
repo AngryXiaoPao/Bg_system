@@ -12,3 +12,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 /.idea/
 /Bg_system.iml
+/.gitignore
