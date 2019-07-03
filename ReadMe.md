@@ -49,4 +49,4 @@ apache shiro：
  
  **注意： Shiro不会去维护用户、维护权限，这些需要我们自己去设计/提供，然后通过相应的接口注入给Shiro**
  
-![shiro基础架构]("./doc/img/ShiroBasicArchitecture.png")
+![shiro基础架构]("https://github.com/AngryXiaoPao/Bg_system/blob/master/doc/img/ShiroBasicArchitecture.png")
