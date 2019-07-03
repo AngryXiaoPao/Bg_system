@@ -1,0 +1,18 @@
+#server setting
+server:
+  port: 80
+#spring setting
+spring:
+  application:
+    name: manage_system
+  banner:
+    charset: UTF-8
+    location: banner.txt
+  datasource:
+    url: jdbc:mysql://localhost:3306/bgms?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: bjjh123
+logging:
+  config: classpath:logback-spring.xml
+  file: log/bgms.log

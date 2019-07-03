@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- On Windows machines setting withJansi to true enables ANSI
+             color code interpretation by the Jansi library. This requires
+             org.fusesource.jansi:jansi:1.8 on the class path.  Note that
+             Unix-based operating systems such as Linux and Mac OS X
+             support ANSI color codes by default. -->
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.core.env" level="ERROR"/>
+    <logger name="cn.pawn" level="ERROR"/>
+    <!--<logger name="cn.pawn.ratel.test" level="DEBUG"/>-->
+
+    <!--JdbcTemplate的日志输出器 -->
+    <logger name="org.springframework.jdbc.core.StatementCreatorUtils" additivity="false" level="TRACE">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.springframework.jdbc.core" additivity="true">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="java.sql.Connection" additivity="true">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="java.sql.Statement" additivity="true">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="java.sql.PreparedStatement" additivity="true">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="java.sql.ResultSet" additivity="true">
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

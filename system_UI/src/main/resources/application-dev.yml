@@ -1,0 +1,37 @@
+#server setting
+server:
+  port: 80
+#spring setting
+spring:
+  application:
+    name: manage_system
+  banner:
+    charset: UTF-8
+    #banner文件地址 相对于资源文件的地址
+    location: banner.txt
+  datasource:
+    url: jdbc:mysql://localhost:3306/bgms?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: bjjh123
+  #实体类生成表
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      database: mysql
+      #配置数据库引擎为innodb 否则默认引擎为myisam
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+    prefix: classpath:/templates/
+logging:
+  #日志文件地址 相对整个项目的地址
+  config: classpath:logback-dev.xml
+# MyBatis
+mybatis:
+  mapper-locations: classpath:/cn.pawn.retel.test/*.xml
