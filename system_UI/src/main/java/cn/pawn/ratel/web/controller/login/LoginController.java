@@ -21,4 +21,9 @@ public class LoginController {
     public String login(HttpServletRequest request, HttpServletResponse response) {
         return prefix+"/login";
     }
+
+    public String index(){
+        return prefix+"/index";
+    }
+
 }
