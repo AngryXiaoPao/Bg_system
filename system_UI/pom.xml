@@ -20,6 +20,12 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>2.1.6.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.pawn</groupId>
+            <artifactId>shiro</artifactId>
+            <version>${ratel.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -37,15 +43,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>${artifactId}</warName>
-                </configuration>
             </plugin>
         </plugins>
         <finalName>${artifactId}</finalName>

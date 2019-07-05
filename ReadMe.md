@@ -51,4 +51,9 @@ apache shiro：
  
 ![shiro基础架构](https://github.com/AngryXiaoPao/Bg_system/blob/master/doc/img/ShiroBasicArchitecture.png "shiro基础架构")
 
-远程同步测试
+RBAC:略
+
+shiro配置： 首先要配置的是ShiroConfig类，Apache Shiro 核心通过 Filter
+来实现，
+既然是使用Filter，一般也就能猜到，是通过URL规则来进行过滤和权限校验，所以我们需要定义一系列关于URL的规则和访问权限。
+

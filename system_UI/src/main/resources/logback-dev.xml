@@ -1,48 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- On Windows machines setting withJansi to true enables ANSI
-             color code interpretation by the Jansi library. This requires
-             org.fusesource.jansi:jansi:1.8 on the class path.  Note that
-             Unix-based operating systems such as Linux and Mac OS X
-             support ANSI color codes by default. -->
-        <withJansi>true</withJansi>
+    <!--<property name="log.path" value="/home/ruoyi/logs"/>-->
+    <property name="log.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n"/>
+
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+            <pattern>${log.pattern}</pattern>
         </encoder>
     </appender>
 
-    <logger name="org.springframework.core.env" level="ERROR"/>
-    <logger name="cn.pawn" level="ERROR"/>
-    <!--<logger name="cn.pawn.ratel.test" level="DEBUG"/>-->
+    <!-- 系统日志输出 -->
+    <!--<appender name="file_info" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${log.path}/sys-info.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--&lt;!&ndash; 按天回滚 daily &ndash;&gt;-->
+            <!--<fileNamePattern>${log.path}/sys-info.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--&lt;!&ndash; 日志最大的历史 60天 &ndash;&gt;-->
+            <!--<maxHistory>60</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>${log.pattern}</pattern>-->
+        <!--</encoder>-->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--<level>INFO</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+    <!--</appender>-->
 
-    <!--JdbcTemplate的日志输出器 -->
-    <logger name="org.springframework.jdbc.core.StatementCreatorUtils" additivity="false" level="TRACE">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.springframework.jdbc.core" additivity="true">
-        <level value="DEBUG"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="java.sql.Connection" additivity="true">
-        <level value="DEBUG"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="java.sql.Statement" additivity="true">
-        <level value="DEBUG"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="java.sql.PreparedStatement" additivity="true">
-        <level value="DEBUG"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="java.sql.ResultSet" additivity="true">
-        <level value="DEBUG" />
-        <appender-ref ref="STDOUT"/>
-    </logger>
+    <!--<appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${log.path}/sys-error.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${log.path}/sys-error.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--&lt;!&ndash; 日志最大的历史 60天 &ndash;&gt;-->
+            <!--<maxHistory>60</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>${log.pattern}</pattern>-->
+        <!--</encoder>-->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--<level>ERROR</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+    <!--</appender>-->
 
+    <!-- 用户访问日志输出  -->
+    <!--<appender name="sys-user" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${log.path}/sys-user.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--&lt;!&ndash; 按天回滚 daily &ndash;&gt;-->
+            <!--<fileNamePattern>${log.path}/sys-user.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--&lt;!&ndash; 日志最大的历史 60天 &ndash;&gt;-->
+            <!--<maxHistory>60</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>${log.pattern}</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
 
-    <root level="DEBUG">
-        <appender-ref ref="STDOUT" />
+    <!-- 显示形成的sql、使用的参数、结果集 -->
+    <!--
+        <logger name="java.sql" level="debug" />
+        <logger name="org.springframework.jdbc" level="debug" />
+    -->
+
+    <logger name="com.pawn.ratel" level="info"/>
+
+    <root level="info">
+        <appender-ref ref="console"/>
     </root>
+
+    <!--系统操作日志-->
+    <!--<root level="info">-->
+        <!--<appender-ref ref="file_info"/>-->
+        <!--<appender-ref ref="file_error"/>-->
+    <!--</root>-->
+
+    <!--&lt;!&ndash;系统用户操作日志&ndash;&gt;-->
+    <!--<logger name="sys-user" level="info">-->
+        <!--<appender-ref ref="sys-user"/>-->
+    <!--</logger>-->
 </configuration>

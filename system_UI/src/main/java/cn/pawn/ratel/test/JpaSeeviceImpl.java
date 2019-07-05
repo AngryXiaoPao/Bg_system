@@ -3,6 +3,7 @@ package cn.pawn.ratel.test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ import java.util.List;
  * @Date 2019-07-01 16:26:46
  **/
 @Service
+@Transactional
 public class JpaSeeviceImpl implements JpaService {
 
     @Autowired
