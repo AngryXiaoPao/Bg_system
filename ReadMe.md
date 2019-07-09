@@ -1,5 +1,8 @@
+## **0.前言**
+   这两年springboot框架越来越火，然后又发现自己这两年来都做着重复的事情(面向baidu编程)，很多问题错了一次又一次，工作做了一遍又一遍，是时候总结出一点东西了。打算以springboot为基础，搞出一套完整的东西，这个项目的开发过程就做为整个项目的日志吧。
 ## **1.配置日志 日志可分为生产环境日志与开发环境日志**
-1. 开发环境日志主要打印在控制台，以可以以不同颜色显示不同级别的提示信息为要；
+1. 开发环境日志主要打印在控制台，以可以以不同颜色显示不同级别的提示信息为要(idea提供了对不同级别的日志打印不同颜色的信息的插件，很好用，叫grep
+   console)；
 2. 生产环境日志主要是用于追溯bug，以提示信息尽可能详尽为要；
 
 mybatis要debug级别才可以打印sql，需要另外使用logger来描述；
@@ -40,7 +43,10 @@ spring:
 参考父子pom构建即可
 
 ## 4.shiro权限控制
-apache shiro：
+
+参考教程：https://www.cnblogs.com/liyinfeng/p/8033869.html
+ 
+ apache shiro：
    
     1.Authentication（认证）：用户身份识别，通常被称为用户“登录”
     2. Authorization（授权）：访问控制。比如某个用户是否具有某个操作的使用权限。
@@ -53,7 +59,17 @@ apache shiro：
 
 RBAC:略
 
-shiro配置： 首先要配置的是ShiroConfig类，Apache Shiro 核心通过 Filter
-来实现，
-既然是使用Filter，一般也就能猜到，是通过URL规则来进行过滤和权限校验，所以我们需要定义一系列关于URL的规则和访问权限。
+shiro配置： 
+Subject：当前用户，Subject 可以是一个人，但也可以是第三方服务、守护进程帐户、时钟守护任务或者其它–当前和软件交互的任何事件。
 
+SecurityManager：管理所有Subject，SecurityManager 是 Shiro 架构的核心，配合内部安全组件共同组成安全伞。
+
+Realms：用于进行权限信息的验证，我们自己实现。Realm 本质上是一个特定的安全 DAO：它封装与数据源连接的细节，得到Shiro 所需的相关的数据。在配置 Shiro 的时候，你必须指定至少一个Realm 来实现认证（authentication）和/或授权（authorization）。
+
+我们需要实现Realms的Authentication 和 Authorization。其中 Authentication 是用来验证用户身份，Authorization 是授权访问控制，用于对用户进行的操作授权，证明该用户是否允许进行当前操作，如访问某个链接，某个资源文件等。
+
+
+
+## 5.WebMvcConfigurer
+  之前搭建项目框架时为了增加验证码经历了些问题，发现很多框架中都使用了WebMvcConfigurer实现类来做一些配置，后来研究发现，这个类对于项目有很大的作用，来记录下
+  参考文档：https://blog.csdn.net/fmwind/article/details/81235401
