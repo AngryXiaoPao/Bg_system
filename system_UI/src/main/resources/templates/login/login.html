@@ -1,16 +1,16 @@
-<!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>后台管理系统</title>
-	<link rel="stylesheet" th:href="@{css/auth.css}">
+	<!--<link rel="shortcut icon" href="static/favicon.ico" type="image/vnd.microsoft.icon">-->
+	<link rel="stylesheet" th:href="@{static/css/auth.css}">
 </head>
 
 <body>
 	<div class="lowin">
 		<div class="lowin-brand">
-			<img th:src="@{img/kodinger.jpg}" alt="logo">
+			<img th:src="@{static/img/kodinger.jpg}" alt="logo">
 		</div>
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
@@ -69,7 +69,7 @@
 		</footer>
 	</div>
 
-	<script th:src="@{js/auth.js}"></script>
+	<script th:src="@{static/js/auth.js}"></script>
 	<script>
 		Auth.init({
 			login_url: '#login',

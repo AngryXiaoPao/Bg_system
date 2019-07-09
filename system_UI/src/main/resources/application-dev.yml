@@ -29,6 +29,12 @@ spring:
     # 禁用缓存
     cache: false
     prefix: classpath:/templates/
+  mvc:
+    static-path-pattern: /static/**
+    #springboot项目会默认发送web请求来访问favicon.icon，设置为false则不会发送请求
+    favicon:
+      enabled: true
+
 logging:
   #日志文件地址 相对整个项目的地址
   config: classpath:logback-dev.xml

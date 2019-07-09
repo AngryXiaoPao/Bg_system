@@ -59,7 +59,8 @@ spring:
 
 RBAC:略
 
-shiro配置： 
+shiro配置：
+ 
 Subject：当前用户，Subject 可以是一个人，但也可以是第三方服务、守护进程帐户、时钟守护任务或者其它–当前和软件交互的任何事件。
 
 SecurityManager：管理所有Subject，SecurityManager 是 Shiro 架构的核心，配合内部安全组件共同组成安全伞。
@@ -70,6 +71,18 @@ Realms：用于进行权限信息的验证，我们自己实现。Realm 本质�
 
 
 
+## 4.1 关于静态资源访问
+ springboot涉及到静态资源访问的配置大致有这几个： 
+ + spring.mvc.static-path-pattern 
+ + 过滤器中对web请求的无差别拦截，如shiro 
+
+springboot对于static文件夹下的静态资源默认打包是在项目根目录下的，所以项目发布后，访问资源路径是不带有static路径的，将spring.mvc.static-path-pattern配置为/static/**则访问静态资源路径必须带有static，
+如果不配置spring.mvc.static-path-pattern，则shiro中必须对static文件夹下的静态资源一一做匿名可访问配置，所以比较优雅的解决方案是：
++ spring.mvc.static-path-pattern:/static/**
++ filterChainDefinitionMap.put("/static/**", "anon")
+
 ## 5.WebMvcConfigurer
   之前搭建项目框架时为了增加验证码经历了些问题，发现很多框架中都使用了WebMvcConfigurer实现类来做一些配置，后来研究发现，这个类对于项目有很大的作用，来记录下
+  
   参考文档：https://blog.csdn.net/fmwind/article/details/81235401
+
