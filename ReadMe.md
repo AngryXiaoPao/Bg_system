@@ -39,6 +39,10 @@ spring:
 
 8. @Temporal ：向数据库映射日期（Date）属性时用来调整映射的精度。Date 类型的数据有 DATE, TIME, 和 TIMESTAMP 三种精度(即单纯的日期,时间,或者两者兼备).
 
+| Keyword |simple| JPQL snippet|     
+|---|:---: |:----:| 
+| And | findByLastnameAndFirstname |… where x.lastname =?1 and x.firstname = ?2|
+其他见文档：https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.named-queries
 ## 3.多工程
 参考父子pom构建即可
 

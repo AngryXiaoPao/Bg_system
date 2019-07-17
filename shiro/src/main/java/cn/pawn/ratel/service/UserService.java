@@ -1,4 +1,6 @@
-package cn.pawn.ratel.service.impl;
+package cn.pawn.ratel.service;
+
+import cn.pawn.ratel.entity.User;
 
 /**
  * @ClassName UserService
@@ -6,6 +8,7 @@ package cn.pawn.ratel.service.impl;
  * @Author zengyejun
  * @Date 2019-07-05 11:50:23
  **/
-public class UserService {
+public interface UserService {
 
+    User findByUsername(String username);
 }

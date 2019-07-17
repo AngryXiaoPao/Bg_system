@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>后台管理系统</title>
-	<!--<link rel="shortcut icon" href="static/favicon.ico" type="image/vnd.microsoft.icon">-->
+	<link rel="shortcut icon" href="static/favicon.ico" type="image/vnd.microsoft.icon">
 	<link rel="stylesheet" th:href="@{static/css/auth.css}">
 </head>
 
@@ -15,11 +15,11 @@
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
 				<div class="lowin-box-inner">
-					<form>
+					<form action="#" method="POST">
 						<p>Sign in to continue</p>
 						<div class="lowin-group">
-							<label>Email <a href="#" class="login-back-link">Sign in?</a></label>
-							<input type="email" autocomplete="email" name="email" class="lowin-input">
+							<label>Username <a href="#" class="login-back-link">Sign in?</a></label>
+							<input type="text" autocomplete="username" name="username" class="lowin-input">
 						</div>
 						<div class="lowin-group password-group">
 							<label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
