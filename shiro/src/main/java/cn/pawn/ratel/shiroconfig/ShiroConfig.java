@@ -7,6 +7,7 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,7 +30,8 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         filterChainDefinitionMap.put("/static/**", "anon");//匿名可访问
         filterChainDefinitionMap.put("/logout", "logout");
-//        filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/signin","anon");
+        filterChainDefinitionMap.put("/error/**","anon");
         filterChainDefinitionMap.put("/**", "authc");//认证可访问
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
@@ -39,6 +41,10 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSuccessUrl("/index");
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/error/403");
+
+        Map map = new HashMap();
+        map.put("authc", new MyFormAuthenticationFilter());
+        shiroFilterFactoryBean.setFilters(map);
 
         return shiroFilterFactoryBean;
     }

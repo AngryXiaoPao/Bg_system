@@ -15,7 +15,7 @@
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
 				<div class="lowin-box-inner">
-					<form action="#" method="POST">
+					<form action="/signin" method="POST">
 						<p>Sign in to continue</p>
 						<div class="lowin-group">
 							<label>Username <a href="#" class="login-back-link">Sign in?</a></label>
@@ -72,7 +72,7 @@
 	<script th:src="@{static/js/auth.js}"></script>
 	<script>
 		Auth.init({
-			login_url: '#login',
+			login_url: '/signin',
 			forgot_url: '#forgot'
 		});
 	</script>
